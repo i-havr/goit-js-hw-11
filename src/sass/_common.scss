@@ -1,1 +1,25 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding-top: 80px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #212121;
+  background-color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
