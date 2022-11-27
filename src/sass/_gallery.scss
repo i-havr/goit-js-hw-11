@@ -1,2 +1,74 @@
 .gallery {
+  padding: 20px;
+}
+
+.gallery-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -15px;
+  padding: 0;
+}
+
+.gallery-item {
+  width: calc((100% - 120px) / 4);
+  height: 250px;
+  margin: 15px;
+}
+
+.gallery-link {
+  width: 100%;
+  height: 100%;
+}
+
+.photo-card {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  color: #606dbc;
+
+  &:hover,
+  &:focus {
+    color: #465298;
+  }
+}
+
+.photo-card > img {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 200px;
+}
+
+.info {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 50px;
+  font-size: 12px;
+}
+
+.info-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  text-align: center;
+}
+
+.end-search-message {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.end-search-message.is-hidden {
+  display: none;
 }
