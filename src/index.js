@@ -27,6 +27,8 @@ const imagesApiService = new ImagesApiService();
 refs.form.addEventListener('submit', onFormSubmit);
 loadMoreBtn.refs.button.addEventListener('click', onLoadMoreBtnClick);
 
+// smoothScroll();
+
 async function onFormSubmit(event) {
   event.preventDefault();
 
@@ -47,13 +49,11 @@ async function onFormSubmit(event) {
       if (data.total === 0) {
         notifyFailure();
       } else if (data.hits.length === data.totalHits) {
-        console.log(data);
         appendImagesMarkup(data.hits);
         notifySuccess(data.totalHits);
         notifyEndOfSearch();
         // refs.endSearchMessage.classList.remove('is-hidden');
       } else {
-        console.log(data);
         appendImagesMarkup(data.hits);
         notifySuccess(data.totalHits);
         loadMoreBtn.show();
@@ -72,19 +72,16 @@ async function onLoadMoreBtnClick() {
   try {
     await imagesApiService.fetchImages().then(data => {
       const pageCount = data.totalHits / imagesApiService.per_page;
-      console.log(pageCount);
 
-      console.log(imagesApiService.page - 1);
-
-      // if (data.hits.length < imagesApiService.per_page) {
       if (pageCount <= imagesApiService.page - 1) {
         appendImagesMarkup(data.hits);
+        smoothScroll();
         loadMoreBtn.hide();
         notifyEndOfSearch();
         // refs.endSearchMessage.classList.remove('is-hidden');
       } else {
-        console.log(data);
         appendImagesMarkup(data.hits);
+        smoothScroll();
         loadMoreBtn.enable();
       }
     });
@@ -120,4 +117,14 @@ function notifyEpmtyInput() {
 
 function notifyEndOfSearch() {
   Notify.info("We're sorry, but you've reached the end of search results.");
+}
+
+function smoothScroll() {
+  const { height: cardHeight } =
+    refs.galleryList.firstElementChild.getBoundingClientRect();
+
+  window.scrollBy({
+    top: cardHeight * 2,
+    behavior: 'smooth',
+  });
 }
