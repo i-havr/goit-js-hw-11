@@ -27,8 +27,6 @@ const imagesApiService = new ImagesApiService();
 refs.form.addEventListener('submit', onFormSubmit);
 loadMoreBtn.refs.button.addEventListener('click', onLoadMoreBtnClick);
 
-// smoothScroll();
-
 async function onFormSubmit(event) {
   event.preventDefault();
 
